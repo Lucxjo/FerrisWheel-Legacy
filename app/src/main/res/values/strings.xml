@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Ferris Wheel</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="messages">Messages</string>
+    <string name="data">My Details</string>
+    <string name="welcome">Welcome to Ferris Wheel. The anonymous chat app that matches you with a random person.</string>
+    <string name="cont">Continue</string>
+    <string name="policy"><![CDATA[Data & Privacy Policy]]></string>
+    <string name="account_notice">Please note that this information is only used for matching users. Your match will not see this information until you both press reveal in the chat settings.</string>
+    <string name="account_gender">Gender:</string>
+    <string name="account_chat">Chatting with:</string>
+    <string name="age">Age</string>
+    <string name="relationship">Relationship status:</string>
+    <string name="logout">Sign Out</string>
+    <string name="phone">Phone number (inc. dialling prefix)</string>
+</resources>
