@@ -11,24 +11,36 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/SecondaryTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"/>
-        <activity android:name=".auth.SignInActivity"
-            android:label="Sign In"/>
-        <activity android:name=".PolicyActivity"
-            android:label="Privacy Policy"/>
-        <activity android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+        <activity
+            android:name=".auth.SignInActivity"
+            android:label="Sign In" />
+        <activity
+            android:name=".PolicyActivity"
+            android:label="Privacy Policy" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
+        </activity>
+        <activity android:name=".ChatActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9bc962214b7b1ceb7abc02ca28187cd28d7a0ead"
+            />
     </application>
 
 </manifest>

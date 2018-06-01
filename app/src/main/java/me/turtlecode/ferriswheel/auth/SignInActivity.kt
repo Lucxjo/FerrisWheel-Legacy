@@ -2,7 +2,7 @@ package me.turtlecode.ferriswheel.auth
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
@@ -11,11 +11,8 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import me.turtlecode.ferriswheel.MainActivity
 import me.turtlecode.ferriswheel.R
 import me.turtlecode.ferriswheel.util.FirestoreUtil
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.design.longSnackbar
-import org.jetbrains.anko.indeterminateProgressDialog
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.newTask
+import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class SignInActivity : AppCompatActivity() {
 
@@ -23,11 +20,9 @@ class SignInActivity : AppCompatActivity() {
             listOf(AuthUI.IdpConfig.EmailBuilder()
                     .setAllowNewAccounts(true)
                     .setRequireName(true)
-                    .build(),
-                    AuthUI.IdpConfig.PhoneBuilder()
-                            .build())
+                    .build())
 
-    private val RC_SIGN_IN = 1
+    private val RC_SIGN_IN = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +38,10 @@ class SignInActivity : AppCompatActivity() {
                     .build()
 
             startActivityForResult(intent, RC_SIGN_IN)
+        }
+
+        sDataButton.onClick {
+            browse("https://www.iubenda.com/privacy-policy/89605138", false)
         }
     }
 
@@ -65,9 +64,9 @@ class SignInActivity : AppCompatActivity() {
 
                 when (response.error?.errorCode) {
                     ErrorCodes.NO_NETWORK ->
-                            longSnackbar(sConstraintLayout, "No network available")
+                            longToast("No network available")
                     ErrorCodes.UNKNOWN_ERROR ->
-                        longSnackbar(sConstraintLayout, R.string.fui_error_unknown.toString())
+                        longToast(R.string.fui_error_unknown.toString())
                 }
             }
         }

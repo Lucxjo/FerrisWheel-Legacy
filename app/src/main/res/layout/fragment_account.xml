@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/aConstraintLayout"
@@ -115,29 +115,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aLHintView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/aSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/colorAccent"
         android:text="@string/fui_button_text_save"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="16dp"
+        app:rippleColor="@color/colorPrimary"
+        app:icon="@drawable/ic_save_black_24dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/aSignOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
-        android:backgroundTint="@color/colorAccent"
         android:text="@string/logout"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="16dp"
+        app:rippleColor="@color/colorPrimary"/>
 
     <EditText
         android:id="@+id/aPhoneText"
@@ -152,4 +153,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
-</android.support.constraint.ConstraintLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/aChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:chipText="Account data saved successfully"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aPhoneText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

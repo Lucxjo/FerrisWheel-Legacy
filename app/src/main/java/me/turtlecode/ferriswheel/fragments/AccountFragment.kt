@@ -1,8 +1,10 @@
 package me.turtlecode.ferriswheel.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.os.Handler
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,29 +38,8 @@ class AccountFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
-
-
         view.apply {
-            /**
-            aSaveButton.setOnClickListener {
-                FirestoreUtil.updateCurrentUser(
-                        aNameText.text.toString(),
-                        0,
-                        aGSpinner.selectedItemPosition,
-                        aCSpinner.selectedItemPosition,
-                        aAgeText.text.toString().toInt(),
-                        aRSpinner.selectedItemPosition,
-                        aPhoneText.text.toString())
-            }
-
-            aSignOutButton.setOnClickListener {
-                AuthUI.getInstance()
-                        .signOut(this@AccountFragment.context!!)
-                        .addOnCompleteListener {
-                            startActivity(intentFor<SignInActivity>().newTask().clearTask())
-                        }
-            }
-        */
+            aChip.visibility = View.INVISIBLE
 
             aSaveButton.onClick {
                 FirestoreUtil.updateCurrentUser(
@@ -68,15 +49,21 @@ class AccountFragment : Fragment() {
                         aCSpinner.selectedItemPosition,
                         aRSpinner.selectedItemPosition,
                         aPhoneText.text.toString())
+                aChip.visibility = View.VISIBLE
+
+                Handler().postDelayed({
+                    aChip.visibility = View.INVISIBLE
+                },5000)
             }
 
             aSignOutButton.onClick {
                 AuthUI.getInstance()
                         .signOut(this@AccountFragment.context!!)
                         .addOnCompleteListener {
-                            startActivity(intentFor<SignInActivity>().newTask().clearTask())
+                            startActivity(Intent(AccountFragment().context, SignInActivity::class.java))
                         }
             }
+
         }
 
         return view
