@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">#7ef9ff</item>
+        <item name="android:navigationBarColor">@color/gradStop</item>
+        <item name="android:textColorPrimary">@color/textColorPrim</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimaryIn</item>
+        <item name="android:textColorSecondary">@color/textColorSec</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecIn</item>
+    </style>
+
+    <style name="DialogTheme" parent="AlertDialog.AppCompat.Light">
+
+    </style>
+
+</resources>
