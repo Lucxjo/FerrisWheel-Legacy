@@ -71,6 +71,7 @@ dependencies {
     implementation 'com.xwray:groupie:2.1.0'
     implementation 'com.xwray:groupie-kotlin-android-extensions:2.1.0'
     implementation "com.airbnb.android:lottie:$lottie_version"
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
     kotlin {
         experimental {

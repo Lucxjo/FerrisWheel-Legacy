@@ -37,5 +37,6 @@
     <string name="please_enter">Please enter</string>
     <string name="your_pass">your password</string>
     <string name="a_pass">a password</string>
+    <string name="empty_pass">You need to enter a password to continue.</string>
     <string name="acknowledge">I understand</string>
 </resources>

@@ -1,8 +1,11 @@
 package co.aplicared.ferriswheel
 
 
+import android.app.AlertDialog
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.crashlytics.android.Crashlytics
@@ -55,12 +58,10 @@ class LoginActivity : AppCompatActivity() {
                 if (!mPasswordText.text.isEmpty()) {
                     register(mEmailText.text.toString(), mPasswordText.text.toString())
                 } else {
-                    toast("$ent $apas")
+                    dialogMessage(getString(R.string.empty_pass))
                 }
             } else {
-                alert(R.string.fui_missing_email_address) {
-                    okButton {}
-                }.show()
+                dialogMessage(getString(R.string.fui_missing_email_address))
             }
         }
 
@@ -68,6 +69,30 @@ class LoginActivity : AppCompatActivity() {
             access(mEmailText.text.toString(), mPasswordText.text.toString())
         }
 
+    }
+
+    fun dialogMessage(msg: String) {
+        lateinit var dialog: AlertDialog
+        dialog = alert {
+            customView {
+                verticalLayout {
+                    padding = dip(16)
+                    textView(msg).textSize = 18f
+                    textView(getString(android.R.string.ok)) {
+                        this.setTextColor(getColor(R.color.colorPrimary))
+                        this.textSize = 18f
+                        this.setTypeface(Typeface.DEFAULT, Typeface.BOLD)
+                    }.lparams {
+                        this.topMargin = 16
+                        this.width = 150
+                        this.gravity = Gravity.END
+
+                    }.onClick {
+                        dialog.dismiss()
+                    }
+                }
+            }
+        }.show() as AlertDialog
     }
 
     fun register(email: String, password: String) {
