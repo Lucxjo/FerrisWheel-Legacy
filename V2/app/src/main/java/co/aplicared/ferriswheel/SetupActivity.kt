@@ -2,26 +2,31 @@ package co.aplicared.ferriswheel
 
 import android.os.Bundle
 import android.util.TypedValue
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import kotlinx.android.synthetic.main.activity_setup.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class SetupActivity : AppCompatActivity() {
 
-    val m = arrayOf("Jaques", "Blue", "Alec", "Magnus", "Hypnos")
-    val fm = arrayOf("Athena", "Tyche", "Keelin", "Aline", "Iris")
-    val nb = arrayOf("Atrians")
+    private val TAG = "LoginActivity"
 
-    //TODO: Check sOText is correct (*chat with*/chatting with)
+    private lateinit var mFirebaseAnalytics: FirebaseAnalytics
+    private lateinit var mFirebaseAuth: FirebaseAuth
+    private lateinit var mFirebaseRemoteConfig: FirebaseRemoteConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setup)
 
-        //sGender.onItemSelectedListener {
-        //    setDisplayNameStrings()
-        //}
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+        mFirebaseAuth = FirebaseAuth.getInstance()
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+
 
         val email = intent.getStringExtra("email")
         val password = intent.getStringExtra("password")
@@ -50,19 +55,5 @@ class SetupActivity : AppCompatActivity() {
 
         }
 
-    }
-
-    fun setDisplayNameStrings() {
-
-        lateinit var gender: Array<String>
-        if (sGender.selectedItem.toString() == R.array.gender.toString(0)) {
-            gender = m
-        } else if (sGender.selectedItem.toString() == R.array.gender.toString(1)) {
-            gender = fm
-        } else {
-            gender = nb
-        }
-
-        sDis.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, gender)
     }
 }

@@ -7,6 +7,6 @@
     <color name="gradStop">#64e5ff</color>
     <color name="textColorPrim">#FFFFFFFF</color>
     <color name="textColorPrimaryIn">#DE000000</color>
-    <color name="textColorSec">#B2FFFFFF</color>
+    <color name="textColorSec">#b2ffffff</color>
     <color name="textColorSecIn">#8A000000</color>
 </resources>

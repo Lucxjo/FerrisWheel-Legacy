@@ -1,20 +1,35 @@
 package co.aplicared.ferriswheel
 
-import org.junit.Assert.assertEquals
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.rule.ActivityTestRule
+import org.junit.ClassRule
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+import tools.fastlane.screengrab.Screengrab
+import tools.fastlane.screengrab.locale.LocaleTestRule
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-@RunWith(AndroidJUnit4::class)
+@RunWith(JUnit4::class)
 class ExampleInstrumentedTest {
+
+    @Rule
+    var activityRule = ActivityTestRule(MainActivity::class.java)
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("co.aplicared.ferriswheel", appContext.packageName)
+    fun testTakeScreenshot() {
+        Screengrab.screenshot("before_button_click")
+
+        // Your custom onView...
+        onView(withId(R.id.mSignUp)).perform(click())
+
+        Screengrab.screenshot("after_button_click")
+    }
+
+    companion object {
+        @ClassRule
+        val localeTestRule = LocaleTestRule()
     }
 }

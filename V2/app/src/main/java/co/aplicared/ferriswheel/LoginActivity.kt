@@ -12,6 +12,7 @@ import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.answers.Answers
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.*
@@ -19,8 +20,11 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class LoginActivity : AppCompatActivity() {
 
+    private val TAG = "LoginActivity"
+
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
     private lateinit var mFirebaseAuth: FirebaseAuth
+    private lateinit var mFirebaseRemoteConfig: FirebaseRemoteConfig
 
     val handler = Handler()
     val runnable = Runnable {
@@ -46,6 +50,8 @@ class LoginActivity : AppCompatActivity() {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
         mFirebaseAuth = FirebaseAuth.getInstance()
+
+        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
 
         if (FirebaseAuth.getInstance().currentUser != null) {
             startActivity(intentFor<MainActivity>().newTask().clearTask())
