@@ -10,7 +10,8 @@
     <string name="fname">First Name</string>
     <string name="lname">Last Name</string>
     <string name="hi">Hi</string>
-
+    <string name="login_error">Unfortunately there has been an error trying to sign you in</string>
+    <string name="signup_error">Unfortunately there has been an error trying to sign you up</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>

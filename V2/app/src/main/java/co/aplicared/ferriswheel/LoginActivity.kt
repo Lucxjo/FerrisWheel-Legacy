@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -106,13 +108,26 @@ class LoginActivity : AppCompatActivity() {
             intentFor<SetupActivity>(
                 "email" to email,
                 "password" to password,
-                "text" to "co.aplicared.ferriswheel.LoginActivity.register"
+                "text" to "co.aplicared.ferriswheel.LoginActivity.register",
+                "firstSignUp" to true
             )
         )
     }
 
     fun access(email: String, password: String) {
-
+        mFirebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Crashlytics.log(Log.INFO, TAG, "Sign in with Email and Password: success")
+                    val user = mFirebaseAuth.currentUser
+                    startActivity(intentFor<MainActivity>().newTask().clearTask())
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Crashlytics.log(Log.WARN, TAG, "Sign in with Email and Password: " + task.exception)
+                    dialogMessage(R.string.login_error.toString())
+                }
+            }
     }
 
 }
