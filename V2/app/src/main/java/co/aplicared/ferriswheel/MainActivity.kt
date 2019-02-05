@@ -1,9 +1,10 @@
 package co.aplicared.ferriswheel
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
